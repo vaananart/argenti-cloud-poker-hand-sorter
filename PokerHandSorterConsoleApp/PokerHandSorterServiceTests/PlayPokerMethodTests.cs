@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using PokerHanderSorterService;
+using GameService;
 
 using PokerHandSorterServiceTests.Utils;
 
@@ -14,11 +14,12 @@ namespace PokerHandSorterServiceTests
 {
 	public class PlayPokerMethodTests
 	{
+		//NOTE: Code Coverage : These tests covers all the lines in the prod code.
 		[Fact]
 		public void Play1GameTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 			var gameResult = gameSvc.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
@@ -31,9 +32,8 @@ namespace PokerHandSorterServiceTests
 		public void Play1Game_With_Loop_Issue_Test()
 		{
 			var lines = TestSampleDataExtractor.Extract("Input-to-loop-issue.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
-			Debugger.Break();
 			var gameResult = gameSvc.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
 			Assert.Equal(2, gameResult.Play1_Rank);

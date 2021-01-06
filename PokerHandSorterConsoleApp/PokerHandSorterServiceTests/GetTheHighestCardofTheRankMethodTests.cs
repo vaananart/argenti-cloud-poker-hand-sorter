@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using PokerHanderSorterService;
+using GameService;
 
 using PokerHandSorterServiceTests.Utils;
 
@@ -14,19 +14,18 @@ namespace PokerHandSorterServiceTests
 {
 	public class GetTheHighestCardofTheRankMethodTests
 	{
+		//NOTE: Code Coverage : These tests covers all the lines in the prod code.
 		[Fact]
 		public void GetTheHighestCardWithNoRankTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[4].Player2);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[4].Player2, rank);
 
-			Debugger.Break();
 			Assert.Equal("KC", highestCard.ToString());
 		}
 
@@ -34,15 +33,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithAPairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[4].Player1);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[4].Player1, rank);
-
-			Debugger.Break();
 			Assert.Equal("AH", highestCard.ToString());
 		}
 
@@ -50,15 +46,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithDoublePairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[3].Player2);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[3].Player2, rank);
-
-			Debugger.Break();
 			Assert.Equal("KD", highestCard.ToString());
 		}
 
@@ -66,15 +59,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithThreeOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[3].Player1);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[3].Player1, rank);
-
-			Debugger.Break();
 			Assert.Equal("6C", highestCard.ToString());
 		}
 
@@ -82,15 +72,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithStraightTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[2].Player2);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[2].Player2, rank);
-
-			Debugger.Break();
 			Assert.Equal("KS", highestCard.ToString());
 		}
 
@@ -98,15 +85,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[2].Player1);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[2].Player1, rank);
-
-			Debugger.Break();
 			Assert.Equal("AH", highestCard.ToString());
 		}
 
@@ -114,15 +98,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithFullHouseTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[1].Player2);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[1].Player2, rank);
-
-			Debugger.Break();
 			Assert.Equal("KD", highestCard.ToString());
 		}
 
@@ -131,15 +112,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithFourOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[1].Player1);
 
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[1].Player1, rank);
-
-			Debugger.Break();
 			Assert.Equal("6C", highestCard.ToString());
 		}
 
@@ -147,15 +125,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithStraightFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[0].Player2);
-
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[0].Player2, rank);
 
-			Debugger.Break();
 			Assert.Equal("TC", highestCard.ToString());
 		}
 
@@ -163,15 +138,12 @@ namespace PokerHandSorterServiceTests
 		public void GetTheHighestCardWithRoyalFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
-			Debugger.Break();
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rank = gameSvc.DetermineRank(result.ToList()[0].Player1);
-
 			var highestCard = gameSvc.GetTheHighestCardOfTheRank(result.ToList()[0].Player1, rank);
 
-			Debugger.Break();
 			Assert.Equal("AH", highestCard.ToString());
 		}
 	}

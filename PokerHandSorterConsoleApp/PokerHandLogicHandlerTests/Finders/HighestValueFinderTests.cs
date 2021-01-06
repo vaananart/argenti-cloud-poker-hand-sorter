@@ -7,7 +7,7 @@ namespace PokerHandLogicHandlerTests.Finders
 {
 	public class HighestValueFinderTests
 	{
-		//NOTE: these tests covers all the lines in the code.
+		//NOTE: Code Coverage : these tests covers all the lines in the code.
 		[Fact]
 		public void HighestCardTest()
 		{

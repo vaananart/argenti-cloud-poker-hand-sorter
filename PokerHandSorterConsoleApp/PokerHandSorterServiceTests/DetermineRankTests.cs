@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using PokerHanderSorterService;
+using GameService;
 
 using PokerHandSorterServiceTests.Utils;
 
@@ -14,12 +14,12 @@ namespace PokerHandSorterServiceTests
 {
 	public class DetermineRankTests
 	{
-		//NOTE: These tests covers all the lines in the prod code
+		//NOTE: Code Coverage : These tests covers all the lines in the prod code.
 		[Fact]
 		public void DeterminRankForRoyalFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rankResult = gameSvc.DetermineRank(result.ToList()[0].Player1);
@@ -30,7 +30,7 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForStraightFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rankResult = gameSvc.DetermineRank(result.ToList()[0].Player2);
@@ -41,7 +41,7 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFourOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var rankResult = gameSvc.DetermineRank(result.ToList()[1].Player1);
@@ -52,10 +52,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFullHouseTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[1].Player2);
 			Assert.Equal(7, rankResult);
 		}
@@ -64,10 +63,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[2].Player1);
 			Assert.Equal(6, rankResult);
 		}
@@ -76,10 +74,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForStraightTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[2].Player2);
 			Assert.Equal(5, rankResult);
 		}
@@ -88,10 +85,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForThreeOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[3].Player1);
 			Assert.Equal(4, rankResult);
 		}
@@ -100,10 +96,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForDoublePairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[3].Player2);
 			Assert.Equal(3, rankResult);
 		}
@@ -112,10 +107,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForAPairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[4].Player1);
 			Assert.Equal(2, rankResult);
 		}
@@ -124,10 +118,9 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForNoMatchTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			Debugger.Break();
 			var rankResult = gameSvc.DetermineRank(result.ToList()[4].Player2);
 			Assert.Equal(0, rankResult);
 		}

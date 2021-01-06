@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using PokerHandDomainModels;
 using PokerHandDomainModels.Enums;
@@ -10,6 +9,12 @@ namespace PokerHandLogicHandlers.Utils
 {
 	public static class ListExtension
 	{
+		/// <summary>
+		/// The method is used to order the list by the value of the card.
+		/// The order is implemented as to the context of the card's value
+		/// </summary>
+		/// <param name="cards"></param>
+		/// <returns></returns>
 		public static IEnumerable<CardModel> OrderingByCardValue(this IList<CardModel> cards)
 		{
 			IDictionary<int, List<CardModel>> cardsLookup = new Dictionary<int, List<CardModel>>();

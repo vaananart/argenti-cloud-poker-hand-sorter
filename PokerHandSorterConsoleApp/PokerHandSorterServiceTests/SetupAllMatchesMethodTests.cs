@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using PokerHanderSorterService;
+using GameService;
 
 using PokerHandSorterServiceTests.Utils;
 
@@ -14,11 +14,12 @@ namespace PokerHandSorterServiceTests
 {
 	public class SetupAllMatchesMethodTests
 	{
+		//NOTE: Code Coverage : These tests covers all the lines in the prod code.
 		[Fact]
 		public void SetupAllMatchesTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-setupAllmatches-sample.txt");
-			var gameSvc = new GameService(lines.ToArray());
+			var gameSvc = new PokerHandService(lines.ToArray());
 			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
 			var player1Cards = from card in result.ToList()[0].Player1.CardsAtHand

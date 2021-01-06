@@ -5,6 +5,11 @@ using PokerHandLogicHandlers.Finders;
 
 namespace PokerHandDomainModels.Extensions
 {
+	/// <summary>
+	/// This extension helps to simplify the coding pattern and clearly
+	/// under the responsibility of the player since the player holds the cards to
+	/// determine the ranks in the card collection.
+	/// </summary>
 	public static class PlayerModelExtension
 	{
 		public static bool HasAFlush(this PlayerModel player)

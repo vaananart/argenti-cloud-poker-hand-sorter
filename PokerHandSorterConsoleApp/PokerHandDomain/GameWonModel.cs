@@ -2,6 +2,9 @@
 
 namespace PokerHandDomainModels
 {
+	/// <summary>
+	/// Used in reporting the outcome of the game.
+	/// </summary>
 	public class GameWonModel
 	{
 		public bool Player1_Won { get; set; }

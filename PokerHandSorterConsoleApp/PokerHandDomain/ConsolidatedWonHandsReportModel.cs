@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PokerHandDomainModels
 {
+	/// <summary>
+	/// This model is reponsible to consolidate the winnings after Nth nubmer of poke games.
+	/// </summary>
 	public class ConsolidatedWonHandsReportModel
 	{
 		public IList<GameModel> Games { get; set; }
