@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PokerHanderSorterService\GameServices.csproj" />
+    <ProjectReference Include="..\Services\GameServices\GameServices.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameServices", "PokerHanderSorterService\GameServices.csproj", "{F69F2713-5791-42A6-B850-F40CE612738C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandLogicRuleHandlers", "PokerHandLogicHandler\PokerHandLogicRuleHandlers.csproj", "{ADE26051-852B-44EC-AAD3-9F7F689E0220}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F1697E6C-9248-4530-8CD6-97963E74A3B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{28B1A074-245B-4D37-B269-88BCA51C84DF}"
@@ -35,20 +31,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandDomainModels", "Ga
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandDomainModels.Extensions", "GameModels\PokerHands\PokerHandDomainModels.Extensions\PokerHandDomainModels.Extensions.csproj", "{6621CC38-90A6-459A-99A9-00AD20A261A0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameServices", "Services\GameServices\GameServices.csproj", "{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandLogicRuleHandlers", "Logics\PokerHandLogicHandler\PokerHandLogicRuleHandlers.csproj", "{7455EFED-E7A1-40D9-868A-FC2D9C4F288B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F69F2713-5791-42A6-B850-F40CE612738C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F69F2713-5791-42A6-B850-F40CE612738C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F69F2713-5791-42A6-B850-F40CE612738C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F69F2713-5791-42A6-B850-F40CE612738C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADE26051-852B-44EC-AAD3-9F7F689E0220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADE26051-852B-44EC-AAD3-9F7F689E0220}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADE26051-852B-44EC-AAD3-9F7F689E0220}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADE26051-852B-44EC-AAD3-9F7F689E0220}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCFBE5D4-8ADC-4498-AEB6-454FE4EE3B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCFBE5D4-8ADC-4498-AEB6-454FE4EE3B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCFBE5D4-8ADC-4498-AEB6-454FE4EE3B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,13 +65,19 @@ Global
 		{6621CC38-90A6-459A-99A9-00AD20A261A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6621CC38-90A6-459A-99A9-00AD20A261A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6621CC38-90A6-459A-99A9-00AD20A261A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7455EFED-E7A1-40D9-868A-FC2D9C4F288B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7455EFED-E7A1-40D9-868A-FC2D9C4F288B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7455EFED-E7A1-40D9-868A-FC2D9C4F288B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7455EFED-E7A1-40D9-868A-FC2D9C4F288B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F69F2713-5791-42A6-B850-F40CE612738C} = {F19BAA81-46CD-4736-8AE3-2E62B93C723E}
-		{ADE26051-852B-44EC-AAD3-9F7F689E0220} = {2240E6A7-3D12-45AD-9262-B2BA7AD8DEEE}
 		{BA5E61AE-7917-4AF8-9F56-505EBD8A44EF} = {D4555EBA-DE48-4BC2-A173-01F92CC09079}
 		{B14EF8D3-E4CF-4296-B462-1B21B64DF1C6} = {F1697E6C-9248-4530-8CD6-97963E74A3B4}
 		{2240E6A7-3D12-45AD-9262-B2BA7AD8DEEE} = {EABBA59C-09F4-48D1-9C37-8F20E0C93992}
@@ -88,6 +86,8 @@ Global
 		{3F6A6023-D23A-4081-8FF3-FF1E2211046C} = {B14EF8D3-E4CF-4296-B462-1B21B64DF1C6}
 		{861A40F5-6AE7-44FE-87F2-999E78020F76} = {BA5E61AE-7917-4AF8-9F56-505EBD8A44EF}
 		{6621CC38-90A6-459A-99A9-00AD20A261A0} = {BA5E61AE-7917-4AF8-9F56-505EBD8A44EF}
+		{C3ADB6A1-254A-4D88-9956-1BC880FCA6F1} = {F19BAA81-46CD-4736-8AE3-2E62B93C723E}
+		{7455EFED-E7A1-40D9-868A-FC2D9C4F288B} = {2240E6A7-3D12-45AD-9262-B2BA7AD8DEEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DDA806A-1A88-432B-84BD-03C8200EF17C}
