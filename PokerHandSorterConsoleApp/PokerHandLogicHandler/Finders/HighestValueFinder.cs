@@ -13,8 +13,6 @@ namespace PokerHandLogicHandlers.Finders
 
 		public static CardModel HighestValue(IList<CardModel> cards)
 		{
-			Debugger.Break();
-
 			CardModel HighestValueCard = new CardModel(null);
 
 			foreach (CardModel element in cards)
@@ -57,8 +55,6 @@ namespace PokerHandLogicHandlers.Finders
 
 		public static CardModel FindTheNextHighCardFromTheGiven(IList<CardModel> cards, CardModel givenCard)
 		{
-			Debugger.Break();
-
 			var orderedCardsByValue = cards.OrderBy(x => x.Value).ToList();
 			var matchedGivenCard = cards.Where(x => x.Value == givenCard.Value && x.Suit == givenCard.Suit).FirstOrDefault();
 			var givenCardIndex = orderedCardsByValue.IndexOf(matchedGivenCard);

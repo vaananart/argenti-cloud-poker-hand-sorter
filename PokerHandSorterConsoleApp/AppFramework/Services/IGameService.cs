@@ -17,6 +17,6 @@ namespace AppFramework.Services
 
 		int DetermineRank(PlayerModel player);
 
-
+		ConsolidatedWonHandsReportModel ExecuteAllGamesAndProcessReport();
 	}
 }

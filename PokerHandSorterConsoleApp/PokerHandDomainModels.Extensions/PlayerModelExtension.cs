@@ -16,7 +16,7 @@ namespace PokerHandDomainModels.Extensions
 		{
 			var result = DoublePairFinder.FindTwoPair(player.CardsAtHand);
 
-			return result.Count() == 2 ? true : false; 
+			return result != null ? true : false; 
 		}
 
 		public static bool HasFourOfAKind(this PlayerModel player)
@@ -36,10 +36,7 @@ namespace PokerHandDomainModels.Extensions
 		{
 			var result = PairFinder.FindAPair(player.CardsAtHand);
 
-			if (result.Count() == 0)
-				return false;
-
-			return true;
+			return result != null ? true : false ;
 		}
 
 		public static bool HasRoyalFlush(this PlayerModel player)
@@ -61,10 +58,7 @@ namespace PokerHandDomainModels.Extensions
 		{
 			var result = ThreeOfAKindFinder.FindThreeOfKind(player.CardsAtHand);
 
-			if (result.Count() == 0)
-				return false;
-
-			return true;
+			return result != null ? true : false;
 		}
 
 		public static CardModel ShowHighestValueCare(this PlayerModel player)

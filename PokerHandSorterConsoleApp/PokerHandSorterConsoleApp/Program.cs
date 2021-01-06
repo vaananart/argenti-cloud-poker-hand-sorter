@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using PokerHanderSorterService;
 
@@ -24,10 +25,11 @@ namespace PokerHandSorterConsoleApp
 			} while ( noNewLines != true );
 
 
-			Console.WriteLine("\n==Feed Back== \n");
-			foreach (var lineElement in inputs)
-				Console.WriteLine(lineElement);
-			//var sortService = new SorterService(inputs);
+			var gameService = new GameService(inputs.ToArray());
+			var gamesReport = gameService.ExecuteAllGamesAndProcessReport();
+
+			Console.WriteLine("Player 1: " + gamesReport.Player1WonTotal);
+			Console.WriteLine("Player 2: " + gamesReport.PLayer2WonTotal);
 
 		}
 	}

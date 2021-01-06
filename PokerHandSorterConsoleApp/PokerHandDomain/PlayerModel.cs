@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PokerHandDomainModels
 {
@@ -9,6 +10,8 @@ namespace PokerHandDomainModels
 		public PlayerModel(string cards)
 		{
 			var cardString = cards.Split(" ");
+			if (cardString.Length != 5)
+				Console.WriteLine("Something happened to data. there is no 5 cards");
 			this.CardsAtHand = new List<CardModel>();
 
 			foreach (string card in cardString)

@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="InputSamples\Input-to-loop-issue.txt" />
     <None Remove="InputSamples\poker-hands.txt" />
+    <None Remove="InputSamples\simple-DetermineRank-sample.txt" />
+    <None Remove="InputSamples\simple-setupAllmatches-sample.txt" />
+    <None Remove="InputSamples\simple-setupmatch-sample.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="InputSamples\Input-to-loop-issue.txt" />
     <EmbeddedResource Include="InputSamples\poker-hands.txt" />
+    <EmbeddedResource Include="InputSamples\simple-DetermineRank-sample.txt" />
+    <EmbeddedResource Include="InputSamples\simple-setupAllmatches-sample.txt" />
+    <EmbeddedResource Include="InputSamples\simple-setupmatch-sample.txt" />
   </ItemGroup>
 
   <ItemGroup>

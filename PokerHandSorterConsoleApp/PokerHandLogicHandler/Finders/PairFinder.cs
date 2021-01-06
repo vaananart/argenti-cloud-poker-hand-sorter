@@ -11,6 +11,7 @@ namespace PokerHandLogicHandlers.Finders
 		{
 			IDictionary<char, int> cardSummaryLookup = CardsLookupBuilder.Build(sampleCards);
 
+
 			var matchedPairValue = cardSummaryLookup.Where(x => x.Value == 2).FirstOrDefault();
 
 			var result = sampleCards.Where(x => x.Value == matchedPairValue.Key);

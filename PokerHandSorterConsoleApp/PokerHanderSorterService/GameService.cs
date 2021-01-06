@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using AppFramework.Services;
 
 using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
 using PokerHandDomainModels.Extensions;
 
 using PokerHandLogicHandlers.Finders;
@@ -14,14 +16,15 @@ namespace PokerHanderSorterService
 	{
 
 
-		private readonly IList<GameModel> games = null;
+		private readonly IList<GameModel> _games = null;
 		private readonly string[] _cardFeeds;
 
 
 		public GameService(string[] cardFeed)
 		{
 			this._cardFeeds = cardFeed;
-			this.games = new List<GameModel>();
+			this._games = new List<GameModel>();
+			this._games.Concat(this.SetupAllMatches(this._cardFeeds));
 		}
 
 		public int DetermineRank(PlayerModel player)
@@ -55,6 +58,9 @@ namespace PokerHanderSorterService
 			else if (player.HasAPair())
 				ranks[2] = true;
 
+			if (Array.TrueForAll(ranks, x => x == false))
+				return 0;
+			
 			for (int i = 1; i < ranks.Length; i++)
 			{
 				if (ranks[i] == true)
@@ -62,6 +68,19 @@ namespace PokerHanderSorterService
 			}
 
 			return 0;
+		}
+
+		public ConsolidatedWonHandsReportModel ExecuteAllGamesAndProcessReport()
+		{
+			foreach (GameModel game in this._games)
+			{
+				var gameResult = this.PlayPoker(game);
+				game.GameResult = gameResult;
+			}
+
+			return new ConsolidatedWonHandsReportModel {
+				Games = this._games
+			};
 		}
 
 		public CardModel GetTheHighestCardOfTheRank(PlayerModel player, int rank)
@@ -97,7 +116,11 @@ namespace PokerHanderSorterService
 						return HighestValueFinder.HighestValue(doublePairs.ToList());
 					}
 				case 2:
-						return PairFinder.FindAPair(player.CardsAtHand).FirstOrDefault();
+					{
+						var result = PairFinder.FindAPair(player.CardsAtHand);
+						return result != null? result.FirstOrDefault():null;
+
+					}
 				case 1:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
 				default:
@@ -139,11 +162,41 @@ namespace PokerHanderSorterService
 					player2HighestCard = player2Cards.CardsAtHand.Where(x => x.Value == player2HighestCard.Value && x.Suit == player2HighestCard.Suit).FirstOrDefault();
 					player2Cards.CardsAtHand.Remove(player2HighestCard);
 
+					player1Rank = 0;
+					player2Rank = 0;
 				} while (player1HighestCard.Value == player2HighestCard.Value);
 
-				gameResult.Player1_Won = player1HighestCard.Value > player2HighestCard.Value ? true : false;
+				int finalPlayer1CardValue = int.MinValue;
+				int finalPlayer2CardValue = int.MinValue;
 
-				gameResult.Player2_Won = player1HighestCard.Value < player2HighestCard.Value ? true : false;
+				if (!int.TryParse(player1HighestCard.Value.ToString(), out finalPlayer1CardValue))
+				{
+					SpecialCardEnum specialCard;
+					Enum.TryParse(player1HighestCard.Value.ToString(), out specialCard);
+					finalPlayer1CardValue = (int)specialCard;
+				}
+				else
+				{
+					int.TryParse(player1HighestCard.Value.ToString(), out finalPlayer1CardValue);
+				}
+
+
+				if (!int.TryParse(player2HighestCard.Value.ToString(), out finalPlayer2CardValue))
+				{
+					SpecialCardEnum specialCard;
+					Enum.TryParse(player2HighestCard.Value.ToString(), out specialCard);
+					finalPlayer2CardValue = (int)specialCard;
+				}
+				else
+				{
+					int.TryParse(player2HighestCard.Value.ToString(), out finalPlayer2CardValue);
+				}
+
+
+
+				gameResult.Player1_Won = finalPlayer1CardValue > finalPlayer2CardValue ? true : false;
+
+				gameResult.Player2_Won = finalPlayer1CardValue < finalPlayer2CardValue ? true : false;
 			}
 
 			return gameResult;
@@ -155,10 +208,10 @@ namespace PokerHanderSorterService
 			foreach (string element in allMatchInputs)
 			{
 				var newGame = this.SetupMatch(element);
-				this.games.Add(newGame);
+				this._games.Add(newGame);
 			}
 
-			return games;
+			return _games;
 		}
 
 		public GameModel SetupMatch(string matchInput)
@@ -166,8 +219,8 @@ namespace PokerHanderSorterService
 			var firstPlayerCards = matchInput.Split(" ").ToList().GetRange(0, 5).ToArray();
 			var secondPlayerCards = matchInput.Split(" ").ToList().GetRange(5, 5).ToArray();
 
-			var firstPlayer = new PlayerModel(string.Concat(firstPlayerCards));
-			var secondPlayer = new PlayerModel(string.Concat(secondPlayerCards));
+			var firstPlayer = new PlayerModel(string.Join(" ", firstPlayerCards));
+			var secondPlayer = new PlayerModel(string.Join(" " , secondPlayerCards));
 
 			var game = new GameModel();
 			game.Player1 = firstPlayer;
@@ -175,6 +228,8 @@ namespace PokerHanderSorterService
 
 			return game;
 		}
+
+		
 
 	}
 }

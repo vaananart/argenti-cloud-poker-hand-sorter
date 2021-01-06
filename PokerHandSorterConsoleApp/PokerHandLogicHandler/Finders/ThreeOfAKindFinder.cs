@@ -14,7 +14,7 @@ namespace PokerHandLogicHandlers.Finders
 			var matchedPairValue = cardSummaryLookup.Where(x => x.Value == 3).FirstOrDefault();
 
 			var result = sampleCards.Where(x => x.Value == matchedPairValue.Key);
-			return result;
+			return result.Count() != 0 ? result : null;
 		}
 	}
 }

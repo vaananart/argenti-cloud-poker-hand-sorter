@@ -7,6 +7,7 @@ namespace PokerHandLogicHandlerTests.Finders
 {
 	public class HighestValueFinderTests
 	{
+		//NOTE: these tests covers all the lines in the code.
 		[Fact]
 		public void HighestCardTest()
 		{
@@ -22,6 +23,23 @@ namespace PokerHandLogicHandlerTests.Finders
 			var result = HighestValueFinder.HighestValue(sampleCards);
 
 			Assert.Equal('K', result.Value);
+		}
+
+		[Fact]
+		public void HighestCardWithAceTest()
+		{
+			var sampleCards = new List<CardModel>
+			{
+				new CardModel("4H"),
+				new CardModel("KC"),
+				new CardModel("6S"),
+				new CardModel("7S"),
+				new CardModel("AD")
+			};
+
+			var result = HighestValueFinder.HighestValue(sampleCards);
+
+			Assert.Equal('A', result.Value);
 		}
 
 		[Fact]
