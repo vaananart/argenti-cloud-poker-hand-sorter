@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PokerHandDomain\PokerHandDomainModels.csproj" />
+    <ProjectReference Include="..\GameModels\PokerHands\PokerHandDomainModels.Extensions\PokerHandDomainModels.Extensions.csproj" />
+    <ProjectReference Include="..\GameModels\PokerHands\PokerHandDomain\PokerHandDomainModels.csproj" />
   </ItemGroup>
 
 </Project>
