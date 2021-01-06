@@ -20,7 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PokerHandLogicHandler\PokerHandLogicRuleHandlers.csproj" />
+    <ProjectReference Include="..\..\PokerHandDomainModels.Extensions\PokerHandDomainModels.Extensions.csproj" />
+    <ProjectReference Include="..\..\PokerHandDomain\PokerHandDomainModels.csproj" />
+    <ProjectReference Include="..\..\PokerHandLogicHandler\PokerHandLogicRuleHandlers.csproj" />
+    <!--<ProjectReference Include="..\PokerHandLogicHandler\PokerHandLogicRuleHandlers.csproj" />-->
   </ItemGroup>
 
 </Project>

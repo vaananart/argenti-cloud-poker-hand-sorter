@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppFramework\GameFramework.csproj" />
     <ProjectReference Include="..\GameFramework\GameFramework.csproj" />
     <ProjectReference Include="..\PokerHandDomainModels.Extensions\PokerHandDomainModels.Extensions.csproj" />
     <ProjectReference Include="..\PokerHandDomain\PokerHandDomainModels.csproj" />

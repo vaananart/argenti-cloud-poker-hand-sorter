@@ -36,7 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PokerHanderSorterService\GameServices.csproj" />
+    <ProjectReference Include="..\..\GameFramework\GameFramework.csproj" />
+    <ProjectReference Include="..\..\PokerHandDomainModels.Extensions\PokerHandDomainModels.Extensions.csproj" />
+    <ProjectReference Include="..\..\PokerHandDomain\PokerHandDomainModels.csproj" />
+    <ProjectReference Include="..\..\PokerHanderSorterService\GameServices.csproj" />
+    <!--<ProjectReference Include="..\PokerHanderSorterService\GameServices.csproj" />-->
   </ItemGroup>
 
 </Project>
