@@ -8,5 +8,9 @@ Your feedback is much appreciated and helps me to continue to learn and improve.
 ## Requirements
 The requirements for this implementation can be found in the requirements folder.
 
+## Instructions:
+
+Please refer to the [INSTRUCTIONS.md](https://github.com/vaananart/argenti-cloud-poker-hand-sorter/blob/main/INSTRUCTIONS.md)
+
 
 
