@@ -1,9 +1,7 @@
 using System.Linq;
-
-using GameService;
-
+using GameFramework.Services;
+using GameServices.PokerHand.Support;
 using PokerHandSorterServiceTests.Utils;
-
 using Xunit;
 
 namespace PokerHandSorterServiceTests
@@ -15,8 +13,9 @@ namespace PokerHandSorterServiceTests
 		public void SetupMatchTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-setupmatch-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupMatch(lines[0]);
+
+			IMatchMaker gameMaker = new PokerHandGameOrganiser();
+			var result = gameMaker.SetupMatch(lines[0]);
 
 			var player1Cards = from card in result.Player1.CardsAtHand
 							   select card.ToString();

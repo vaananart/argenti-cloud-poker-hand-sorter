@@ -1,9 +1,9 @@
-﻿using System.Linq;
-
-using GameService;
-
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameFramework.Services;
+using GameServices.PokerHand.Support;
+using PokerHandDomainModels;
 using PokerHandSorterServiceTests.Utils;
-
 using Xunit;
 
 namespace PokerHandSorterServiceTests
@@ -15,8 +15,9 @@ namespace PokerHandSorterServiceTests
 		public void SetupAllMatchesTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-setupAllmatches-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
 			var player1Cards = from card in result.ToList()[0].Player1.CardsAtHand
 							   select card.ToString();

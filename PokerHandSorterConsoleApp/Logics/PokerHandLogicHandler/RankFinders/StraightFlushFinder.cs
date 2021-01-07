@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using PokerHandDomainModels;
-
 using PokerHandLogicHandlers.ModelExtensions;
-
 using PokerHandLogicHandlers.Utils;
 
 namespace PokerHandLogicHandlers.Finders

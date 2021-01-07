@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using GameService;
-
+using GameFramework.Services;
+using GameServices.PokerHand.Support;
+using PokerHandDomainModels;
 using PokerHandSorterServiceTests.Utils;
-
 using Xunit;
 
 namespace PokerHandSorterServiceTests
@@ -19,9 +15,14 @@ namespace PokerHandSorterServiceTests
 		public void Play1GameTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
-			var gameResult = gameSvc.PlayPoker(result.ToList()[0]);
+
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
+
+			IScoreDeterminer rankDeterminer = new RankDeterminer();
+			IHighestValueinSubsetSearcher cardSeeker = new HighestValuePokeHandRankSeeker();
+			IGameExecutor gameOperator = new PokerHandGameOperator(rankDeterminer, cardSeeker);
+			var gameResult = gameOperator.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
 			Assert.Equal(10, gameResult.Play1_Rank);
 			Assert.False(gameResult.Player2_Won);
@@ -32,9 +33,13 @@ namespace PokerHandSorterServiceTests
 		public void Play1Game_With_Loop_Issue_Test()
 		{
 			var lines = TestSampleDataExtractor.Extract("Input-to-loop-issue.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
-			var gameResult = gameSvc.PlayPoker(result.ToList()[0]);
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
+
+			IScoreDeterminer rankDeterminer = new RankDeterminer();
+			IHighestValueinSubsetSearcher cardSeeker = new HighestValuePokeHandRankSeeker();
+			IGameExecutor gameOperator = new PokerHandGameOperator(rankDeterminer, cardSeeker);
+			var gameResult = gameOperator.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
 			Assert.Equal(2, gameResult.Play1_Rank);
 			Assert.False(gameResult.Player2_Won);
