@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameFramework", "GameFramew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandConsole", "PokerHandConsoleApp\PokerHandConsole.csproj", "{33AA77B7-6070-4D3C-9D28-0A865918AEA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandLogicHandlersTests", "Tests\PokerHandLogicHandlerTests\PokerHandLogicHandlersTests.csproj", "{E42C5890-2CEF-40FE-9C23-DC34CB9E9E48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandLogicTests", "Tests\PokerHandLogicHandlerTests\PokerHandLogicTests.csproj", "{E42C5890-2CEF-40FE-9C23-DC34CB9E9E48}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandSorterServiceTests", "Tests\PokerHandSorterServiceTests\PokerHandSorterServiceTests.csproj", "{3F6A6023-D23A-4081-8FF3-FF1E2211046C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandOperationsAndServiceTests", "Tests\PokerHandSorterServiceTests\PokerHandOperationsAndServiceTests.csproj", "{3F6A6023-D23A-4081-8FF3-FF1E2211046C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokerHandDomainModels", "GameModels\PokerHands\PokerHandDomain\PokerHandDomainModels.csproj", "{861A40F5-6AE7-44FE-87F2-999E78020F76}"
 EndProject

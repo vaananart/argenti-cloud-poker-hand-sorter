@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-
 using PokerHandDomainModels;
 using PokerHandDomainModels.CardModelVariants;
 
@@ -15,18 +13,18 @@ namespace PokerHandLogicHandlers.Finders
 		/// <returns></returns>
 		public static FullHouseModel FindFullHouse(IList<CardModel> sampleCards)
 		{
-			var threeOfAKing = ThreeOfAKindFinder.FindThreeOfKind(sampleCards);
+			var threeOfAKind = ThreeOfAKindFinder.FindThreeOfKind(sampleCards);
 			var aPair = PairFinder.FindAPair(sampleCards);
 
 
-			if ( threeOfAKing == null)
+			if ( threeOfAKind == null)
 				return null;
 
 			if (aPair == null)
 				return null;
 
 			return new FullHouseModel { 
-				ThreeOfAKind = threeOfAKing,
+				ThreeOfAKind = threeOfAKind,
 				APair = aPair
 			};
 		}

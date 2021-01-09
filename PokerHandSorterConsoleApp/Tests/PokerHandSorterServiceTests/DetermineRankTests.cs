@@ -1,9 +1,9 @@
-﻿using System.Linq;
-
-using GameService;
-
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameFramework.Services;
+using GameServices.PokerHand.Support;
+using PokerHandDomainModels;
 using PokerHandSorterServiceTests.Utils;
-
 using Xunit;
 
 namespace PokerHandSorterServiceTests
@@ -15,10 +15,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForRoyalFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[0].Player1);
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
+
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[0].Player1);
 			Assert.Equal(10, rankResult);
 		}
 
@@ -26,10 +28,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForStraightFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+		
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[0].Player2);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[0].Player2);
 			Assert.Equal(9, rankResult);
 		}
 
@@ -37,10 +41,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFourOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+		
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[1].Player1);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[1].Player1);
 			Assert.Equal(8, rankResult);
 		}
 
@@ -48,10 +54,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFullHouseTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+			
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[1].Player2);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[1].Player2);
 			Assert.Equal(7, rankResult);
 		}
 
@@ -59,10 +67,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForFlushTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+		
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[2].Player1);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[2].Player1);
 			Assert.Equal(6, rankResult);
 		}
 
@@ -70,10 +80,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForStraightTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+			
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[2].Player2);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[2].Player2);
 			Assert.Equal(5, rankResult);
 		}
 
@@ -81,10 +93,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForThreeOfAKindTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+		
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[3].Player1);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[3].Player1);
 			Assert.Equal(4, rankResult);
 		}
 
@@ -92,10 +106,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForDoublePairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
+	
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[3].Player2);
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[3].Player2);
 			Assert.Equal(3, rankResult);
 		}
 
@@ -103,10 +119,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForAPairTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[4].Player1);
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
+
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[4].Player1);
 			Assert.Equal(2, rankResult);
 		}
 
@@ -114,10 +132,12 @@ namespace PokerHandSorterServiceTests
 		public void DeterminRankForNoMatchTest()
 		{
 			var lines = TestSampleDataExtractor.Extract("simple-DetermineRank-sample.txt");
-			var gameSvc = new PokerHandService(lines.ToArray());
-			var result = gameSvc.SetupAllMatches(lines.ToArray());
 
-			var rankResult = gameSvc.DetermineRank(result.ToList()[4].Player2);
+			IGameEventOrganiser _eventOrganiser = new PokerHandEventOrganiser(new PokerHandGameOrganiser(), new List<GameModel>());
+			var result = _eventOrganiser.SetupAllMatches(lines.ToArray());
+
+			IScoreDeterminer determiner = new RankDeterminer();
+			var rankResult = determiner.DetermineRank(result.ToList()[4].Player2);
 			Assert.Equal(0, rankResult);
 		}
 	}
