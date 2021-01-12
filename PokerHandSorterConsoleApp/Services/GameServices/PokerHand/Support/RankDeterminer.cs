@@ -1,13 +1,14 @@
 ﻿using System;
 using GameFramework.Services;
 using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
 using PokerHandDomainModels.Extensions;
 
 namespace GameServices.PokerHand.Support
 {
 	public class RankDeterminer : IScoreDeterminer
 	{
-		public int DetermineRank(PlayerModel player)
+		public RankEnum DetermineRank(PlayerModel player)
 		{
 			bool[] ranks = new bool[11];
 
@@ -44,10 +45,10 @@ namespace GameServices.PokerHand.Support
 			for (int i = 1; i < ranks.Length; i++)
 			{
 				if (ranks[i] == true)
-					return i;
+					return (RankEnum)i;
 			}
 
-			return 0;
+			return (RankEnum)0;
 		}
 	}
 }

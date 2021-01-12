@@ -1,5 +1,7 @@
 ﻿using System;
 
+using PokerHandDomainModels.Enums;
+
 namespace PokerHandDomainModels
 {
 	/// <summary>
@@ -10,7 +12,7 @@ namespace PokerHandDomainModels
 		public bool Player1_Won { get; set; }
 		public bool Player2_Won { get; set; }
 
-		public int Play1_Rank { get; set; }
-		public int Play2_Rank { get; set; }
+		public RankEnum Play1_Rank { get; set; }
+		public RankEnum Play2_Rank { get; set; }
 	}
 }

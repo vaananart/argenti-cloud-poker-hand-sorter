@@ -3,6 +3,8 @@ using System.Linq;
 using GameFramework.Services;
 using GameServices.PokerHand.Support;
 using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
+
 using PokerHandSorterServiceTests.Utils;
 using Xunit;
 
@@ -24,9 +26,9 @@ namespace PokerHandSorterServiceTests
 			IGameExecutor gameOperator = new PokerHandGameOperator(rankDeterminer, cardSeeker);
 			var gameResult = gameOperator.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
-			Assert.Equal(10, gameResult.Play1_Rank);
+			Assert.Equal(RankEnum.RoyalFlush, gameResult.Play1_Rank);
 			Assert.False(gameResult.Player2_Won);
-			Assert.Equal(9, gameResult.Play2_Rank);
+			Assert.Equal(RankEnum.StraightFlush, gameResult.Play2_Rank);
 		}
 
 		[Fact]
@@ -41,11 +43,9 @@ namespace PokerHandSorterServiceTests
 			IGameExecutor gameOperator = new PokerHandGameOperator(rankDeterminer, cardSeeker);
 			var gameResult = gameOperator.PlayPoker(result.ToList()[0]);
 			Assert.True(gameResult.Player1_Won);
-			Assert.Equal(2, gameResult.Play1_Rank);
+			Assert.Equal(RankEnum.Pair, gameResult.Play1_Rank);
 			Assert.False(gameResult.Player2_Won);
-			Assert.Equal(2, gameResult.Play2_Rank);
+			Assert.Equal(RankEnum.Pair, gameResult.Play2_Rank);
 		}
-
-
 	}
 }

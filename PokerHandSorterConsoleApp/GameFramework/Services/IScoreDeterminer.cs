@@ -1,9 +1,10 @@
 ﻿using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
 
 namespace GameFramework.Services
 {
 	public interface IScoreDeterminer
 	{
-		int DetermineRank(PlayerModel player);
+		RankEnum DetermineRank(PlayerModel player);
 	}
 }

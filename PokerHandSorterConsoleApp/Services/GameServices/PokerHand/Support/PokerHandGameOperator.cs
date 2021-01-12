@@ -22,8 +22,8 @@ namespace GameServices.PokerHand.Support
 
 		public GameWonModel PlayPoker(GameModel game)
 		{
-			int player1Rank = this._rankDeterminer.DetermineRank(game.Player1);
-			int player2Rank = this._rankDeterminer.DetermineRank(game.Player2);
+			RankEnum player1Rank = this._rankDeterminer.DetermineRank(game.Player1);
+			RankEnum player2Rank = this._rankDeterminer.DetermineRank(game.Player2);
 
 			GameWonModel gameResult = new GameWonModel();
 			gameResult.Play1_Rank = player1Rank;

@@ -3,6 +3,8 @@ using System.Linq;
 using GameFramework.Services;
 using GameServices.PokerHand.Support;
 using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
+
 using PokerHandSorterServiceTests.Utils;
 using Xunit;
 
@@ -21,7 +23,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[0].Player1);
-			Assert.Equal(10, rankResult);
+			Assert.Equal(RankEnum.RoyalFlush, rankResult);
 		}
 
 		[Fact]
@@ -34,7 +36,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[0].Player2);
-			Assert.Equal(9, rankResult);
+			Assert.Equal(RankEnum.StraightFlush, rankResult);
 		}
 
 		[Fact]
@@ -47,7 +49,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[1].Player1);
-			Assert.Equal(8, rankResult);
+			Assert.Equal(RankEnum.FourOfAKind, rankResult);
 		}
 
 		[Fact]
@@ -60,7 +62,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[1].Player2);
-			Assert.Equal(7, rankResult);
+			Assert.Equal(RankEnum.FullHouse, rankResult);
 		}
 
 		[Fact]
@@ -73,7 +75,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[2].Player1);
-			Assert.Equal(6, rankResult);
+			Assert.Equal(RankEnum.Flush, rankResult);
 		}
 
 		[Fact]
@@ -86,7 +88,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[2].Player2);
-			Assert.Equal(5, rankResult);
+			Assert.Equal(RankEnum.Straight, rankResult);
 		}
 
 		[Fact]
@@ -99,7 +101,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[3].Player1);
-			Assert.Equal(4, rankResult);
+			Assert.Equal(RankEnum.ThreeOfAKind, rankResult);
 		}
 
 		[Fact]
@@ -112,7 +114,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[3].Player2);
-			Assert.Equal(3, rankResult);
+			Assert.Equal(RankEnum.DoublePair, rankResult);
 		}
 
 		[Fact]
@@ -125,7 +127,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[4].Player1);
-			Assert.Equal(2, rankResult);
+			Assert.Equal(RankEnum.Pair, rankResult);
 		}
 
 		[Fact]
@@ -138,7 +140,7 @@ namespace PokerHandSorterServiceTests
 
 			IScoreDeterminer determiner = new RankDeterminer();
 			var rankResult = determiner.DetermineRank(result.ToList()[4].Player2);
-			Assert.Equal(0, rankResult);
+			Assert.Equal(RankEnum.None, rankResult);
 		}
 	}
 }

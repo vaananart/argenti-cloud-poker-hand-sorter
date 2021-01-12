@@ -1,23 +1,25 @@
 ﻿using System.Linq;
 using GameFramework.Services;
 using PokerHandDomainModels;
+using PokerHandDomainModels.Enums;
+
 using PokerHandLogicHandlers.Finders;
 
 namespace GameServices.PokerHand.Support
 {
 	public class HighestValuePokeHandRankSeeker : IHighestValueinSubsetSearcher
 	{
-		public CardModel GetTheHighestCardOfTheRank(PlayerModel player, int rank)
+		public CardModel GetTheHighestCardOfTheRank(PlayerModel player, RankEnum rank)
 		{
 			switch (rank)
 			{
-				case 10:
+				case RankEnum.RoyalFlush:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
-				case 9:
+				case RankEnum.StraightFlush:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
-				case 8:
+				case RankEnum.FourOfAKind:
 					return HighestValueFinder.HighestValue(FourOfAKindFinder.FindFourOfAKind(player.CardsAtHand).ToList());
-				case 7:
+				case RankEnum.FullHouse:
 					{
 						var threeOfAKind = ThreeOfAKindFinder.FindThreeOfKind(player.CardsAtHand);
 						var aPair = PairFinder.FindAPair(player.CardsAtHand);
@@ -25,27 +27,27 @@ namespace GameServices.PokerHand.Support
 						var valueOfTwo = HighestValueFinder.HighestValue(aPair.ToList());
 						return valueOfThree.Value < valueOfTwo.Value ? valueOfTwo : valueOfThree;
 					}
-				case 6:
+				case RankEnum.Flush:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
-				case 5:
+				case RankEnum.Straight:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
-				case 4:
+				case RankEnum.ThreeOfAKind:
 					{
 						var threeOfAKind = ThreeOfAKindFinder.FindThreeOfKind(player.CardsAtHand);
 						return HighestValueFinder.HighestValue(threeOfAKind.ToList());
 					}
-				case 3:
+				case RankEnum.DoublePair:
 					{
 						var doublePairs = DoublePairFinder.FindTwoPair(player.CardsAtHand);
 						return HighestValueFinder.HighestValue(doublePairs.ToList());
 					}
-				case 2:
+				case RankEnum.Pair:
 					{
 						var result = PairFinder.FindAPair(player.CardsAtHand);
 						return result != null ? result.FirstOrDefault() : null;
 
 					}
-				case 1:
+				case RankEnum.HighCard:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
 				default:
 					return HighestValueFinder.HighestValue(player.CardsAtHand);
